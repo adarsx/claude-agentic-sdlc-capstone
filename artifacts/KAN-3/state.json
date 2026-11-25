@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "issueKey": "KAN-3",
+  "title": "Build a browser Todo app with persistent tasks",
+  "repo": "adarsx/claude-agentic-sdlc-capstone",
+  "base": "main",
+  "branch": "feature",
+  "phase": "IMPLEMENT",
+  "currentStage": "pr-delivery",
+  "stages": {
+    "requirements": {
+      "status": "approved",
+      "artifact": "requirements.md",
+      "approvedAt": "2026-11-25T09:07:48.200Z",
+      "approvalNote": "User: \"Approve and continue\" (accepts open-question defaults Q-1..Q-7)"
+    },
+    "architecture": {
+      "status": "approved",
+      "artifact": "architecture.md",
+      "approvedAt": "2026-11-25T09:26:51.619Z",
+      "approvalNote": "User: \"Approve and continue\" (architecture v2, design-review changes applied)"
+    },
+    "design-review": {
+      "status": "approved",
+      "artifact": "design-review.md",
+      "approvedAt": "2026-11-25T09:26:51.619Z",
+      "approvalNote": "User: \"Approve design review\" (findings DR-1..DR-14 closed by architecture v2)"
+    },
+    "impl-plan": {
+      "status": "approved",
+      "artifact": "impl-plan.md",
+      "approvedAt": "2026-11-25T09:34:27.126Z",
+      "approvalNote": "User: \"Approve and continue\" (T1..T10 approved; no commit)"
+    },
+    "implementation": {
+      "status": "approved",
+      "artifact": null,
+      "approvedAt": "2026-11-25T09:49:48.821Z",
+      "approvalNote": "User: \"Approve and continue\" (T1..T10 done, node --test 235/235; no commit)"
+    },
+    "code-review": {
+      "status": "approved",
+      "artifact": "code-review.md",
+      "approvedAt": "2026-11-25T10:05:47.385Z",
+      "approvalNote": "User: \"Approve and continue\" (CR-1,2,3,5 fixed; CR-4,6-11 accepted/info; no commit)"
+    },
+    "verification": {
+      "status": "approved",
+      "artifact": "verification-report.md",
+      "approvedAt": "2026-11-25T10:28:17.721Z",
+      "approvalNote": "User: \"Approve and continue\" (15/15 ACs PASS; NOT RUN items accepted as known limitations)"
+    },
+    "pr-delivery": {
+      "status": "in-progress",
+      "artifact": "pull-request.md",
+      "approvedAt": null,
+      "approvalNote": null
+    }
+  },
+  "approvals": {
+    "stack": {
+      "approved": true,
+      "at": "2026-11-25T09:37:15.160Z",
+      "stack": "Plain HTML/CSS/JS, classic scripts, UMD dual-export todo-logic.js + app.js, localStorage, node --test dev-only; re-confirmed at implementation start"
+    },
+    "commit": {
+      "approved": true,
+      "at": "2026-11-25T10:51:13.443Z",
+      "branch": "feature",
+      "files": [
+        ".claude/agents/architect.md",
+        ".claude/agents/code-reviewer.md",
+        ".claude/agents/design-reviewer.md",
+        ".claude/agents/implementation-planner.md",
+        ".claude/agents/implementer.md",
+        ".claude/agents/pull-request-agent.md",
+        ".claude/agents/requirements-analyst.md",
+        ".claude/agents/sdlc-orchestrator.md",
+        ".claude/agents/verifier.md",
+        ".claude/hooks/check-state.mjs",
+        ".claude/hooks/guard-delivery.mjs",
+        ".claude/hooks/sdlc-cli.mjs",
+        ".claude/hooks/sdlc-lib.mjs",
+        ".claude/settings.json",
+        ".claude/skills/run-sdlc/SKILL.md",
+        ".gitignore",
+        ".mcp.json",
+        "CHANGELOG.md",
+        "CLAUDE.md",
+        "app.js",
+        "artifacts/KAN-3/architecture.md",
+        "artifacts/KAN-3/code-review.md",
+        "artifacts/KAN-3/design-review.md",
+        "artifacts/KAN-3/impl-plan.md",
+        "artifacts/KAN-3/log.md",
+        "artifacts/KAN-3/pull-request.md",
+        "artifacts/KAN-3/requirements.md",
+        "artifacts/KAN-3/state.json",
+        "artifacts/KAN-3/verification-report.md",
+        "artifacts/bootstrap.md",
+        "index.html",
+        "styles.css",
+        "test/todo-logic.test.js",
+        "todo-logic.js"
+      ]
+    },
+    "push": null,
+    "pr": null
+  },
+  "hashes": {
+    "requirements.md": "6390189a074173b393feeb6e320cb957fb4458dffc3f397821f0d524719221df",
+    "architecture.md": "42b84b70e4d5ba5c5968b023ff5f54db35dbd88294320ce933490f16af8760f0"
+  },
+  "tasks": [
+    {
+      "id": "T1",
+      "title": "Logic core: wrapper, constants, pure list operations",
+      "status": "done",
+      "evidence": "todo-logic.js created; node --test (orchestrator re-run) exit 0"
+    },
+    {
+      "id": "T2",
+      "title": "Tests part 1: logic core",
+      "status": "done",
+      "evidence": "test/todo-logic.test.js section 1; node --test: 72 tests, 72 pass, 0 fail, 0 skipped"
+    },
+    {
+      "id": "T3",
+      "title": "Persistence layer: codec, resolveStorage, store, controller",
+      "status": "done",
+      "evidence": "todo-logic.js persistence API added (serialize, restore, resolveStorage, createMemoryStorage, createStore, createController); node --test exit 0"
+    },
+    {
+      "id": "T4",
+      "title": "Tests part 2: restore, storage, store, controller",
+      "status": "done",
+      "evidence": "test/todo-logic.test.js section 2; node --test: 189 tests, 189 pass, 0 fail, 0 skipped"
+    },
+    {
+      "id": "T5",
+      "title": "Test: UMD browser branch (vm)",
+      "status": "done",
+      "evidence": "vm test of UMD browser branch passes (section 3)"
+    },
+    {
+      "id": "T6",
+      "title": "index.html",
+      "status": "done",
+      "evidence": "index.html created; inspected against plan T6 checklist (not rendered in a browser)"
+    },
+    {
+      "id": "T7",
+      "title": "styles.css",
+      "status": "done",
+      "evidence": "styles.css created; every mandatory rule present by inspection (not rendered in a browser)"
+    },
+    {
+      "id": "T8",
+      "title": "app.js DOM layer",
+      "status": "done",
+      "evidence": "app.js created; node --check exit 0; orchestrator read-through matches architecture 4.2 (not run in a browser)"
+    },
+    {
+      "id": "T9",
+      "title": "Tests part 3: source lint",
+      "status": "done",
+      "evidence": "Source-lint tests added (section 4); lint proven live by known-bad strings and a temp-copy check; node --test 235/235"
+    },
+    {
+      "id": "T10",
+      "title": "Final local check run and handoff note",
+      "status": "done",
+      "evidence": "Final run: node --test exit 0, 235 tests, 235 pass, 0 fail, 0 skipped; layout: only the 5 app files, no package.json/node_modules; nothing committed by implementer"
+    }
+  ],
+  "testEvidence": [
+    {
+      "command": "node --test (after T1,T2)",
+      "result": "exit 0; tests 72, pass 72, fail 0, skipped 0 (implementer run, re-run by orchestrator)",
+      "at": "2026-11-25T09:39:05.239Z"
+    },
+    {
+      "command": "node --test (after T3,T4,T5)",
+      "result": "exit 0; tests 189, pass 189, fail 0, skipped 0 (implementer run, re-run by orchestrator)",
+      "at": "2026-11-25T09:41:49.714Z"
+    },
+    {
+      "command": "node --check app.js; node --test (after T6,T7,T8)",
+      "result": "check exit 0; node --test exit 0, tests 189, pass 189, fail 0, skipped 0 (re-run by orchestrator). Browser behaviour NOT run.",
+      "at": "2026-11-25T09:46:14.866Z"
+    },
+    {
+      "command": "node --test (after T9,T10, final implementation run)",
+      "result": "exit 0; tests 235, suites 31, pass 235, fail 0, skipped 0 (implementer run, re-run by orchestrator). Browser checks NOT run.",
+      "at": "2026-11-25T09:48:08.127Z"
+    },
+    {
+      "command": "node --test (after code-review fixes CR-1,2,3,5)",
+      "result": "exit 0; tests 249, suites 31, pass 249, fail 0, skipped 0 (implementer and reviewer runs, re-run by orchestrator). Browser checks NOT run.",
+      "at": "2026-11-25T10:04:26.452Z"
+    },
+    {
+      "command": "verification: node --check x2; node --test",
+      "result": "exit 0; 249 tests, 249 pass, 0 fail, 0 skipped (verifier and orchestrator runs)",
+      "at": "2026-11-25T10:20:23.909Z"
+    },
+    {
+      "command": "verification: ad hoc headless Chrome 158.0.8127.38 and Edge 158.0.4370.33 via CDP, file:// and 127.0.0.1 server",
+      "result": "288 automated checks per browser, 288 pass, 0 fail; zero page errors; AC-1..AC-15 PASS. NOT RUN: screen readers, real touch hardware, Firefox, Safari, @supports :has fallback, held-key limitation. Observations O-1 (thin native focus ring on Add/Delete), O-2 (Delete stretches on very long text at 320px).",
+      "at": "2026-11-25T10:20:23.909Z"
+    }
+  ],
+  "blockers": [],
+  "decisions": [
+    "Bootstrap approved by user: 8 specialist agents generated in .claude/agents/ (choice: \"Approve and continue\").",
+    "Jira MCP reconnected; KAN-3 fetched read-only (0 comments). Remote adarsx/claude-agentic-sdlc-capstone main contains only README.md; local repo has no origin remote and no app code.",
+    "User answers (ASK): branch = existing `feature` branch (user free-text answer \"feature\"); tests = Node built-in test runner (dev-only, dependency-free); app at repo root, add origin remote at PR time with approval; plan approved (\"Approve and continue\").",
+    "Requirements approved with defaults for Q-1..Q-7 (memory fallback if localStorage unavailable; silent empty start on corrupt data; validation message clears on next input/add; widths 320/375/768/1280 and 44px touch targets; no max length; duplicates allowed; no task limit).",
+    "Architecture and stack approved with OD-1..OD-6 defaults (ad hoc browser verification or manual checklist; no persistence notice; no package.json; checkbox toggle; lenient restore). User declined a commit for this stage.",
+    "Design review: user chose \"Agree all, with my recommendations\": DR-1..DR-14 adopted; OQ-1 yes (move submit outcome, focus planner, resolveStorage into todo-logic.js); OQ-2 yes (detail>1 delete guard, held-key limitation accepted); OQ-3 no package.json unless Node fails to load CJS; OQ-4 trim on restore, drop memory mirror and isPersistent(), keep {version,tasks} envelope. No commit for this stage.",
+    "Architecture v2 and design review approved by user. No commit for this stage.",
+    "Implementation plan T1..T10 approved. No commit for this stage.",
+    "Implementation approved by user. No commit for this stage.",
+    "Code review: user chose \"Fix CR-1,2,3,5; accept CR-4,6-11\". CR-4 (input min-width:44px vs architecture min-width:0) recorded as accepted deviation; CR-6..CR-8 accepted/left for Verification; CR-9..11 info. No commit.",
+    "Code review approved. OD-1 decided by user: ad hoc headless Chrome driven over CDP by a throwaway Node script kept outside the repo; anything not observable is reported unverified. No commit. Note: architecture 4.4 wording on 16-digit id rollover (\"harmless\") is outdated after CR-1 fix; architecture left unedited to keep the approved hash, mention in PR.",
+    "Verification approved. Known limitations accepted: screen-reader announcements, real touch hardware, Firefox/Safari, @supports :has fallback not run; O-1 thin native focus ring on Add/Delete (CR-7); O-2 Delete stretches on very long text at 320px; accepted R-11 (held key on Delete), R-12 (double submit message), R-14 (task text not selectable); CR-4 input min-width 44px; architecture 4.4 wording on 16-digit rollover is outdated after CR-1 fix.",
+    "PR delivery decisions (user): single squashed commit on top of GitHub main b48d2c1; also reset local main to origin/main (backed up); README.md untouched; framework files included; docs/ and .docx excluded; head branch feature. User approved steps 1-6 (add origin, fetch, backups, soft reset, main reset, commit). Step 1 done; step 2 blocked by DNS failure.",
+    "Fetch retry succeeded; origin/main = b48d2c1. Backups: backup/feature-a2bb750, backup/main-11d6962. feature soft-reset onto origin/main; local main reset to origin/main (user approved). Commit of the listed files approved by the user."
+  ],
+  "prUrl": null,
+  "createdAt": "2026-11-25T08:51:53.950Z",
+  "updatedAt": "2026-11-25T10:51:13.443Z"
+}
